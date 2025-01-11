@@ -6,7 +6,7 @@
 /*   By: plashkar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 19:58:31 by plashkar          #+#    #+#             */
-/*   Updated: 2025/01/11 20:43:08 by plashkar         ###   ########.fr       */
+/*   Updated: 2025/01/11 20:49:41 by plashkar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ PresidentialPardonForm::PresidentialPardonForm(const std::string target)
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& otherForm)
 	: AForm(otherForm), _target(otherForm.getTarget())
 {
-	std::cout << "PresidentialPardonForm: copy constructor for from with target "<< _target << " called" << std::endl;
+	std::cout << "PresidentialPardonForm: copy constructor for form with target "<< _target << " called" << std::endl;
 }
 
 PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& otherForm)
@@ -47,7 +47,7 @@ std::string	PresidentialPardonForm::getTarget( void ) const
 
 void	PresidentialPardonForm::beExecuted( void ) const
 {
-	std::cout << "PresidentialPardonForm: " << _target << "was pardoned by the soup rim leader" << std::endl;
+	std::cout << "PresidentialPardonForm: " << _target << "has been pardoned by Zaphod Beeblebrox." << std::endl;
 }
 
 
