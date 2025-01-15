@@ -6,11 +6,11 @@
 #    By: plashkar <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/29 19:22:04 by plashkar          #+#    #+#              #
-#    Updated: 2025/01/15 17:44:38 by plashkar         ###   ########.fr        #
+#    Updated: 2025/01/15 19:24:46 by plashkar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =ex02
+NAME =ex03
 
 CC = c++
 
@@ -22,6 +22,7 @@ SRC = \
 	PresidentialPardonForm.cpp \
 	RobotomyRequestForm.cpp \
 	ShrubberyCreationForm.cpp \
+	Intern.cpp \
 	main.cpp \
 
 OBJ = $(SRC:.cpp=.o)
@@ -34,7 +35,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	@echo "Compiling $@"
 	@$(CC) $(STANDARD_FLAGS) $(OBJ) -o $(NAME) > /dev/null
-	@echo "ex02 has been created."
+	@echo "ex03 has been created."
 
 clean:
 	@rm -f $(OBJ)
@@ -48,6 +49,6 @@ re: fclean all
 
 v: all clean
 	@echo
-	@./ex02
+	@./ex03
 
 .PHONY: fclean clean all re

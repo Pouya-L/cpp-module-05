@@ -6,42 +6,43 @@
 /*   By: plashkar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 20:11:47 by plashkar          #+#    #+#             */
-/*   Updated: 2025/01/05 20:11:48 by plashkar         ###   ########.fr       */
+/*   Updated: 2025/01/15 17:52:55 by plashkar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main(void)
 {
-	/* Create a form with grade too high */
-	{
-		try
-		{
-			Form form0("A99", 0, 5);
-			std::cout << form0 << std::endl;
-		}
-		catch(std::exception &e)
-		{
-			std::cerr << e.what() << std::endl;
-		}
+	/* Create the 3 forms and some Bureaucrats */
 
-	}
+	std::cout << "--- Create the 3 forms and some Bureaucrat ---\n\n";
+
+	ShrubberyCreationForm shrubbery("Home");
+	RobotomyRequestForm robotomy("Morty");
+	PresidentialPardonForm pardon("Rick Sanchez");
+	Bureaucrat mike("Mike", 150);
+	Bureaucrat jon("Jon", 120);
+	Bureaucrat steve("Steve", 3);
 
 	std::cout << "\n --------------------- \n\n";
 
-	/* Create form and sign it without exceptions */
+	/* Try to execute forms without being signed */
 	{
+		std::cout << "--- Try to execute forms without being signed ---\n\n";
 		try
 		{
-			Bureaucrat mike("Mike", 15);
-			Form form("B58", 20, 45);
 			std::cout << mike << std::endl;
-			std::cout << form << std::endl;
-			mike.signForm(form);
-			std::cout << form << std::endl;
+			std::cout << shrubbery << std::endl;
+			std::cout << robotomy << std::endl;
+			std::cout << pardon << std::endl;
+			mike.executeForm(shrubbery);
+			mike.executeForm(robotomy);
+			mike.executeForm(pardon);
 		}
 		catch (std::exception &e)
 		{
@@ -51,21 +52,53 @@ int main(void)
 
 	std::cout << "\n --------------------- \n\n";
 
-	/* Create form and try to sign it but the grade is not enough */
+	/* Sign form and try to execute without enough grade */
 	{
+		std::cout << "--- Sign form and try to execute without enough grade ---\n\n";
 		try
 		{
-			Bureaucrat jon("Jon", 35);
-			Form form2("C_303", 20, 45);
+			std::cout << mike << std::endl;
 			std::cout << jon << std::endl;
-			std::cout << form2 << std::endl;
-			jon.signForm(form2);
-			std::cout << form2 << std::endl;
+			std::cout << shrubbery << std::endl;
+			std::cout << robotomy << std::endl;
+			std::cout << pardon << std::endl;
+			shrubbery.beSigned(jon);
+			mike.executeForm(shrubbery);
 		}
 		catch (std::exception &e)
 		{
 			std::cout << e.what() << std::endl;
 		}
 	}
+
+	std::cout << "\n --------------------- \n\n";
+
+	/* Sign forms and execute them */
+	{
+		std::cout << "--- Sign forms and execute them ---\n\n";
+		try
+		{
+			robotomy.beSigned(steve);
+			pardon.beSigned(steve);
+			std::cout << shrubbery << std::endl;
+			std::cout << robotomy << std::endl;
+			std::cout << pardon << std::endl;
+
+			std::cout << "\n --------------------- \n\n";
+			steve.executeForm(shrubbery);
+			std::cout << "\n --------------------- \n\n";
+			steve.executeForm(robotomy);
+			std::cout << "\n --------------------- \n\n";
+			steve.executeForm(pardon);
+		}
+		catch (std::exception &e)
+		{
+			std::cout << e.what() << std::endl;
+		}
+	}
+
+	std::cout << "\n --------------------- \n\n";
+
+
 	return (0);
 }
