@@ -6,7 +6,7 @@
 /*   By: plashkar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 16:04:56 by plashkar          #+#    #+#             */
-/*   Updated: 2025/01/15 18:06:59 by plashkar         ###   ########.fr       */
+/*   Updated: 2025/03/05 16:42:08 by plashkar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@
 
 class Bureaucrat;
 
+/**
+ * The pure virtual function beExecuted() in the AForm class is used to enforce
+ * that any derived class must provide its own implementation of this function.
+ * This design makes AForm an abstract class, meaning we cannot instantiate AForm directly;
+ * we can only instantiate classes derived from AForm that implement the beExecuted() method.
+ */
 class AForm {
 private:
 	const std::string	_name;
@@ -26,7 +32,7 @@ private:
 	const int			_gradeReqToSign;
 	const int			_gradeReqToExec;
 protected:
-// Pure virtual function
+	// Pure virtual function
 	virtual void beExecuted( void ) const = 0;
 public:
 	AForm();
@@ -43,6 +49,7 @@ public:
 	void				beSigned(const Bureaucrat& bureaucrat);
 	bool				execute(const Bureaucrat& executor) const;
 
+	// Base class for all AForm exceptions
 	class AFormExceptions : public std::exception {};
 
 	class GradeTooHighException : public AForm::AFormExceptions

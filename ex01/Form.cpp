@@ -6,7 +6,7 @@
 /*   By: plashkar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 16:53:14 by plashkar          #+#    #+#             */
-/*   Updated: 2025/01/11 18:13:06 by plashkar         ###   ########.fr       */
+/*   Updated: 2025/03/05 16:15:43 by plashkar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int Form::getGradeReqToExec( void ) const
 void Form::beSigned(const Bureaucrat& bureaucrat)
 {
 	if (this->_signedStatus)
-		throw AForm::AlreadySignedException();
+		throw Form::AlreadySignedException();
 	if (bureaucrat.getGrade() > _gradeReqToSign)
 		throw Form::GradeTooLowException();
 	_signedStatus = true;

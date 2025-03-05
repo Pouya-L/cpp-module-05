@@ -6,7 +6,7 @@
 /*   By: plashkar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 16:04:56 by plashkar          #+#    #+#             */
-/*   Updated: 2025/01/11 18:13:32 by plashkar         ###   ########.fr       */
+/*   Updated: 2025/03/05 16:15:31 by plashkar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ public:
 	{
 		public:
 			virtual char const* what( void ) const throw();
-	}
+	};
 };
 
 //Overload the insertion operator

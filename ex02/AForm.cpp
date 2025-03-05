@@ -6,7 +6,7 @@
 /*   By: plashkar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 16:53:14 by plashkar          #+#    #+#             */
-/*   Updated: 2025/01/15 18:06:33 by plashkar         ###   ########.fr       */
+/*   Updated: 2025/03/05 16:31:35 by plashkar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ int AForm::getGradeReqToExec( void ) const
 }
 
 //-------------------- Public methods --------------------
+
 void	AForm::beSigned(const Bureaucrat& bureaucrat)
 {
 	if (this->_signedStatus)
@@ -102,6 +103,7 @@ bool	AForm::execute(const Bureaucrat& executor) const
 }
 
 //-------------------- Exceptions --------------------
+
 char const* AForm::GradeTooHighException::what(void) const throw()
 {
 	return ("Grade is too high");
@@ -128,6 +130,7 @@ const char* AForm::ExecutorTooLowException::what( void ) const throw()
 }
 
 //-------------------- Stream Operator Overload --------------------
+
 std::ostream& operator<<(std::ostream &os, const AForm& Aform)
 {
 	os << Aform.getName() << " Aform, signed status: " << Aform.getSignedStatus()
